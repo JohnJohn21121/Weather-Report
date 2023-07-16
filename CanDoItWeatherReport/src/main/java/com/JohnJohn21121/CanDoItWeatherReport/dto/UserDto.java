@@ -19,12 +19,15 @@ public class UserDto {
     private String lastName;
 
     @NotNull
+    private String username;
+
+    @NotNull
     private String password;
 
     private String matchingPassword;
 
     @NotNull
-    @Pattern(regexp=".+@.+\\..+", message="Please enter a valid email address")
+    @Pattern(regexp = ".+@.+\\..+", message = "Please enter a valid email address")
     private String email;
 
 }
