@@ -14,7 +14,7 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
-    
+
 
     @GetMapping("")
     public String viewHomePage(Model model) {
