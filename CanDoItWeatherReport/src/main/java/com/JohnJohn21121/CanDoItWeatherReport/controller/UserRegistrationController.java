@@ -1,9 +1,10 @@
 package com.JohnJohn21121.CanDoItWeatherReport.controller;
 
-import com.JohnJohn21121.CanDoItWeatherReport.Service.UserService;
+import com.JohnJohn21121.CanDoItWeatherReport.service.UserService;
 import com.JohnJohn21121.CanDoItWeatherReport.dto.UserDto;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/user/registration")
+@RequestMapping("/api/v1/user/registration")
 public class UserRegistrationController {
 
     @Autowired
@@ -22,13 +23,15 @@ public class UserRegistrationController {
 
 
     @GetMapping("/form")
-    public String showRegistrationForm(WebRequest request, Model model) {
+    @ResponseBody
+    public Resource showRegistrationForm(WebRequest request, Model model) {
         UserDto userDto = new UserDto();
         model.addAttribute("user", userDto);
-        return "registration";
+        return new ClassPathResource("registration.html");
     }
 
     @PostMapping("/register")
+    @ResponseBody
     public String registerUserAccount(@Valid UserDto userDto, BindingResult result,
                                       RedirectAttributes redirectAttributes,
                                       HttpServletRequest request) {
