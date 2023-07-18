@@ -5,6 +5,7 @@ import com.JohnJohn21121.CanDoItWeatherReport.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-@RestController
+@Controller
 @RequestMapping("/api/v1/user/registration")
 public class UserRegistrationController {
 
@@ -23,15 +24,12 @@ public class UserRegistrationController {
 
 
     @GetMapping("/form")
-    @ResponseBody
-    public Resource showRegistrationForm(WebRequest request, Model model) {
-        UserDto userDto = new UserDto();
-        model.addAttribute("user", userDto);
-        return new ClassPathResource("registration.html");
+    public String showRegistrationForm(WebRequest request, Model model) {
+        model.addAttribute("user", new UserDto());
+        return "singup_form";
     }
 
     @PostMapping("/register")
-    @ResponseBody
     public String registerUserAccount(@Valid UserDto userDto, BindingResult result,
                                       RedirectAttributes redirectAttributes,
                                       HttpServletRequest request) {
