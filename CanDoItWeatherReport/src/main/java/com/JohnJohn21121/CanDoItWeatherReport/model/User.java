@@ -35,4 +35,8 @@ public class User {
     )
     private List<Role> roles;
 
+    public void addRole(Role role) {
+        this.roles.add(role);
+    }
+
 }
