@@ -2,8 +2,6 @@ package com.JohnJohn21121.CanDoItWeatherReport.controller;
 
 import com.JohnJohn21121.CanDoItWeatherReport.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
